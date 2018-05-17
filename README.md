@@ -247,11 +247,11 @@ The resulting html files are found in `_build/html`.
 
 Changes
 ---
-Makefile:
-# To capture arguments for "make data"
+### Makefile:
+#### To capture arguments for "make data"
 args = $(filter-out $@,$(MAKECMDGOALS))
 
-## Make Dataset
+#### Make Dataset
 data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py ${args}
 %:
