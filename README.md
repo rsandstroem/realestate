@@ -160,6 +160,17 @@ Project Organization
 
 --------
 
+Tests
+----
+Every python source file `my_file.py` should have a corresponding 
+`test/test_my_file.py` is the same folder as the source file. 
+This test file should contain [unit tests](https://en.wikipedia.org/wiki/Unit_testing). The unit tests should 
+be used to verify that methods are returning what we expect them to do, etc. They should be written at the same time as the code itself. Do not commit code that fails unit testing!
+
+To run all tests, type `pytest` in the terminal.
+To only run a single test, use `pytest path/to/my/test/test_foo.py`.
+
+
 Code style guide
 ----
 Use the [Google Python Style Guide](http://google.github.io/styleguide/pyguide.html).
