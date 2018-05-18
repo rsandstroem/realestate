@@ -257,4 +257,7 @@ data: requirements
 %:
     @:
 
+### Structure
+Removed `__init__.py` from src folder. Packages can be imported without indicating src, e.g., `from data import make_dataset`.
+
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
