@@ -25,6 +25,7 @@ def create_data_frame(input_filepath):
     logger.info(df.head())
     return df
 
+
 def process_columns(df):
     """Process select columns of a dataframe
 
@@ -47,7 +48,7 @@ def process_columns(df):
         'volume',
         'lot_size',
         'price'
-        ]
+    ]
     for col in num_cols:
         logger.debug(col)
         df[col] = df[col].str.replace('[^\w\s]', '')
@@ -56,9 +57,10 @@ def process_columns(df):
 
     # The location column contains "postal_code commune"
     # df['commune'] = df.location.str.extract(r'([A-Z]\w{0,})', expand=False)
-    df['commune'] = df.location.str.split(' ',1).str.get(1)
+    df['commune'] = df.location.str.split(' ', 1).str.get(1)
     df['postal_code'] = df.location.str.extract(r'(\d{0,})', expand=True)
     df.drop(['location'], axis=1, inplace=True)
+
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -66,7 +68,7 @@ def process_columns(df):
 def main(input_filepath, output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
-            
+
     Args:
         input_filepath: relative file path of a single json file
         output_filepath: relative file path of the output file
@@ -80,6 +82,7 @@ def main(input_filepath, output_filepath):
     process_columns(df)
     logger.info(df.head())
     df.to_csv(output_filepath, index=False)
+
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
