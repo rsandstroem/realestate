@@ -1,5 +1,6 @@
 from data import make_dataset
 import pandas as pd
+import numpy as np
 
 
 def test_process_columns():
@@ -25,8 +26,8 @@ def test_process_columns():
     assert df.rooms[0] == 4.5 # float
     assert df.living_space[0] == 150. # substring as float
     assert df.lot_size[0] == 335. # substring as float
-    assert df.Volume[0] == "NaN" # survive NaN in source data
-    assert df.lot_size[0] == 1999. # float
+    assert np.isnan(df.volume[0]) # survive NaN in source data
+    assert df.year_built[0] == 1999. # float
     assert df.available[0] == "by agreement" # unchanged
 
 

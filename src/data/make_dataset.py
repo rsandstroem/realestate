@@ -47,11 +47,13 @@ def process_columns(df):
         'living_space',
         'volume',
         'lot_size',
-        'price'
+        'price',
+        'rooms',
+        'year_built'
     ]
     for col in num_cols:
         logger.debug(col)
-        df[col] = df[col].str.replace('[^\w\s]', '')
+        df[col] = df[col].str.replace('[^\w\s\{P}.]', '')
         df[col] = df[col].str.split(' ').str.get(0)
         df[col] = pd.to_numeric(df[col], errors='coerce')
 
